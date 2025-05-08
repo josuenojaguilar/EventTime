@@ -9,7 +9,7 @@ export const EventCard = ({ event, onEdit, onDelete }) => {
         <h3 className="text-lg font-semibold">{event.title}</h3>
         <p className="text-sm text-gray-600">{new Date(event.date).toLocaleString()}</p>
         <p className="text-sm">{event.description}</p>
-        <span className="inline-block text-xs bg-gray-200 px-2 py-1 rounded mt-1">{event.category}</span>
+        <span className="inline-block text-xs bg-gray-200 px-2 py-1 rounded mt-1">{event.categoryName}</span>
       </div>
       <div className="space-x-2">
         <button 

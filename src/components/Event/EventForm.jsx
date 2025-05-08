@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export const EventForm = ({ onSubmit, initialData, onCancel }) => {
+export const EventForm = ({ onSubmit, initialData, onCancel, categories }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
@@ -21,7 +21,7 @@ export const EventForm = ({ onSubmit, initialData, onCancel }) => {
     const data = {
       title,
       description,
-      category,
+      category: parseInt(category, 10),
       date,
     }
 
@@ -64,9 +64,9 @@ export const EventForm = ({ onSubmit, initialData, onCancel }) => {
           required
         >
           <option value="">Selecciona una categoría</option>
-          <option value="work">Trabajo</option>
-          <option value="personal">Personal</option>
-          <option value="meeting">Reunión</option>
+          {categories?.map((cat) => (
+            <option key={cat.id} value={cat.id}>{cat.name}</option>
+          ))}
         </select>
       </div>
 

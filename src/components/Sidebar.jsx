@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BiCategory } from "react-icons/bi";
 import { FaBars, FaTimes, FaHome, FaCalendarAlt } from "react-icons/fa";
 import { MdDomain } from "react-icons/md";
 import { VscSymbolEvent } from "react-icons/vsc";
@@ -26,14 +27,19 @@ export const Sidebar = ()=> {
         } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:block`}
       >
         <div className="p-4 text-xl font-bold border-b border-gray-700">
-          My App
+          EventTime
         </div>
+        <div className="flex-1 overflow-hidden">
+
         <nav className="p-4 flex flex-col gap-4">
           <Link to="/" className="flex items-center gap-2 hover:text-blue-400">
             <FaHome /> Home
           </Link>
           <Link to="/dashboard" className="flex items-center gap-2 hover:text-blue-400">
             <MdDomain /> Principal
+          </Link>
+          <Link to="categories" className="flex items-center gap-2 hover:text-blue-400">
+            <BiCategory /> Categorias
           </Link>
           <Link to="events" className="flex items-center gap-2 hover:text-blue-400">
             <VscSymbolEvent /> Eventos
@@ -42,7 +48,11 @@ export const Sidebar = ()=> {
             <FaCalendarAlt /> Calendario
           </Link>
         </nav>
+        <div className="p-4 text-sm text-gray-400 border-t border-gray-700 mt-auto">
+            Creado por Josué Noj
+          </div>
       </div>
+        </div>
     </>
   );
 }

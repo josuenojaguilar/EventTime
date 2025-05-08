@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useEvents } from '../shared/hooks/useEvents'
-import { Modal } from '../components/Modal'
-import { EventForm } from '../components/EventForm'
+import React, { useState } from 'react'
+import { Modal } from '../Modal'
+import { EventForm } from './EventForm'
 import { EventCard } from './EventCard'
 import { PacmanLoader } from 'react-spinners'
 import { useOutletContext } from 'react-router-dom'
 
 export const Events = () => {
-  const { events, isFetching, addEvent, updateEvent, deleteEvent } = useOutletContext()
+  const { events, isFetching, addEvent, updateEvent, deleteEvent, categories } = useOutletContext()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [eventToEdit, setEventToEdit] = useState(null)
   
@@ -50,14 +49,18 @@ export const Events = () => {
         <p className="text-gray-600">No hay eventos aún.</p>
       ) : (
         <ul className="space-y-4">
-          {events.map(event => (
-            <EventCard
-              key={event.id} 
-              event={event} 
-              onEdit={handleEdit} 
-              onDelete={deleteEvent} 
-            />
-          ))}
+          {events.map(event => {
+            
+            const categoryObj = categories.find(cat => cat.id === event.category)
+            const categoryName = categoryObj ? categoryObj.name : 'Sin categoría'
+
+            return <EventCard
+                    key={event.id} 
+                    event={{...event, categoryName}} 
+                    onEdit={handleEdit} 
+                    onDelete={deleteEvent} 
+                  />
+          })}
         </ul>
       )}
 
@@ -66,7 +69,8 @@ export const Events = () => {
         <EventForm 
           onSubmit={handleSubmit} 
           initialData={eventToEdit}
-          onCancel={() => setIsModalOpen(false)} 
+          onCancel={() => setIsModalOpen(false)}
+          categories={categories} 
         />
       </Modal>
     </div>

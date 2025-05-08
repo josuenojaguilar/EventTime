@@ -4,19 +4,40 @@ import { Sidebar } from '../../components/Sidebar'
 import { useEvents } from '../../shared/hooks/useEvents'
 import { BeatLoader } from 'react-spinners'
 import { useEventNotifications } from '../../shared/hooks/useEventNotification'
+import { useCategories } from '../../shared/hooks/useCategories'
 
 export const DashboardPage = () => {
-  const { getEvents, addEvent, updateEvent, deleteEvent, isFetching, events } = useEvents()
-  const [categories, setCategories] = useState([])
+  const { 
+    getEvents, 
+    addEvent, 
+    updateEvent, 
+    deleteEvent, 
+    isFetching: isFetchingEvents,
+    events 
+  } = useEvents()
+
+  const {
+    getCategories,
+    categories,
+    addCategory,
+    updateCategory,
+    deleteCategory,
+    isFetching: isFetchingCategories
+  } = useCategories()
+
 
   useEventNotifications(events)
   useEffect(() => {
-    if (events.length === 0 || isFetching) {
+    if (events.length === 0 || isFetchingEvents) {
       getEvents()
     }
   }, [events])
 
-  if (isFetching) {
+  useEffect(() => {
+    getCategories()
+  }, [])
+
+  if (isFetchingEvents || isFetchingCategories) {
     return (
       <div className="flex items-center justify-center h-screen">
         <BeatLoader />
@@ -30,11 +51,14 @@ export const DashboardPage = () => {
       <main className="flex-1 p-4 flex overflow-y-auto h-full">
         <Outlet 
           context={{
-          events,
-          categories,
-          addEvent,
-          updateEvent,
-          deleteEvent
+            events,
+            categories,
+            addEvent,
+            updateEvent,
+            deleteEvent,
+            addCategory,
+            updateCategory,
+            deleteCategory
           }}
         />
       </main>

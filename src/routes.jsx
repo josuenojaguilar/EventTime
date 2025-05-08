@@ -1,5 +1,6 @@
 import { Calendar } from "./components/Calendar/Calendar";
-import { Events } from "./components/Events";
+import { Category } from "./components/Category/Category";
+import { Events } from "./components/Event/Events";
 import { MainDashboard } from "./components/MainDashboard";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
 import { HomePage } from "./pages/Home/HomePage";
@@ -17,6 +18,10 @@ export const routes = [
             {
                 index: true,
                 element: <MainDashboard />
+            },
+            {
+                path: 'categories',
+                element: <Category />
             },
             {
                 path: 'events',
