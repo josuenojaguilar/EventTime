@@ -1,5 +1,6 @@
 import { Calendar } from "./components/Calendar";
 import { Events } from "./components/Events";
+import { MainDashboard } from "./components/MainDashboard";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
 import { HomePage } from "./pages/Home/HomePage";
 import { NotFoundPage } from "./pages/NotFound/NotFoundPage";
@@ -13,6 +14,10 @@ export const routes = [
         path: '/dashboard',
         element: <DashboardPage />,
         children: [
+            {
+                index: true,
+                element: <MainDashboard />
+            },
             {
                 path: 'events',
                 element: <Events />
