@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { FaBars, FaTimes, FaHome, FaUser, FaCog } from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaCalendarAlt } from "react-icons/fa";
+import { MdDomain } from "react-icons/md";
+import { VscSymbolEvent } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export const Sidebar = ()=> {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
@@ -26,15 +29,18 @@ export default function Sidebar() {
           My App
         </div>
         <nav className="p-4 flex flex-col gap-4">
-          <a href="#" className="flex items-center gap-2 hover:text-blue-400">
+          <Link to="/" className="flex items-center gap-2 hover:text-blue-400">
             <FaHome /> Home
-          </a>
-          <a href="#" className="flex items-center gap-2 hover:text-blue-400">
-            <FaUser /> Profile
-          </a>
-          <a href="#" className="flex items-center gap-2 hover:text-blue-400">
-            <FaCog /> Settings
-          </a>
+          </Link>
+          <Link to="/dashboard" className="flex items-center gap-2 hover:text-blue-400">
+            <MdDomain /> Principal
+          </Link>
+          <Link to="events" className="flex items-center gap-2 hover:text-blue-400">
+            <VscSymbolEvent /> Eventos
+          </Link>
+          <Link to="calendar" className="flex items-center gap-2 hover:text-blue-400">
+            <FaCalendarAlt /> Calendario
+          </Link>
         </nav>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Calendar } from "./components/Calendar";
+import { Calendar } from "./components/Calendar/Calendar";
 import { Events } from "./components/Events";
 import { MainDashboard } from "./components/MainDashboard";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
