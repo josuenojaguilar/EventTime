@@ -11,7 +11,7 @@ export const Sidebar = ()=> {
 
   return (
     <>
-      {/* Botón hamburger para pantallas pequeñas */}
+      {/* Boton pal teléfono */}
       <button
         className="md:hidden fixed top-4 left-4 z-50 text-white bg-blue-600 p-2 rounded"
         onClick={toggleSidebar}

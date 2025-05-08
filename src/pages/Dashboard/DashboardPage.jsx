@@ -23,7 +23,7 @@ export const DashboardPage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <main className="flex-1 p-4 flex items-center justify-center">
+      <main className="flex-1 p-4 flex overflow-y-auto h-full">
         <Outlet context={{ events: events || [], categories }} />
       </main>
     </div>
