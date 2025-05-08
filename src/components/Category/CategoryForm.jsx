@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
 
 export const CategoryForm = ({ onSubmit, initialData, onCancel, categories }) => {
   const [name, setName] = useState('')
