@@ -4,15 +4,12 @@ import { Modal } from '../components/Modal'
 import { EventForm } from '../components/EventForm'
 import { EventCard } from './EventCard'
 import { PacmanLoader } from 'react-spinners'
+import { useOutletContext } from 'react-router-dom'
 
 export const Events = () => {
-  const { events, isFetching, getEvents, addEvent, updateEvent, deleteEvent } = useEvents()
+  const { events, isFetching, addEvent, updateEvent, deleteEvent } = useOutletContext()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [eventToEdit, setEventToEdit] = useState(null)
-
-  useEffect(() => {
-    getEvents()
-  }, [])
   
 
   const handleAdd = () => {
