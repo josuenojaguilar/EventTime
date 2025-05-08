@@ -13,13 +13,15 @@ export const Calendar = () => {
   )
 
   return (
+    <div className="flex-1 p-4 flex items-center justify-center">
+
     <div className="p-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 max-w-md mx-auto">
         <Cal
           onChange={setDate}
           value={date}
           className="react-calendar"
-        />
+          />
       </div>
 
       <div className="mt-8 max-w-2xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
@@ -41,5 +43,6 @@ export const Calendar = () => {
         )}
       </div>
     </div>
+        </div>
   )
 }

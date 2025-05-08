@@ -4,6 +4,8 @@ import { FaCalendarAlt, FaBell, FaClipboardList } from 'react-icons/fa'
 
 export const MainDashboard = () => {
   return (
+    <div className="flex-1 p-4 flex items-center justify-center">
+
     <div className="flex flex-col items-center justify-center h-full text-center px-4">
       <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
         ¡Bienvenido al Dashboard!
@@ -31,6 +33,7 @@ export const MainDashboard = () => {
           <p className="text-gray-600 dark:text-gray-400 mt-2">Consulta y navega tus eventos en una vista de calendario interactiva.</p>
         </Link>
       </div>
+    </div>
     </div>
   )
 }

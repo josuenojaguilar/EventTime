@@ -1,4 +1,6 @@
 import React from 'react'
+import { AiFillDelete } from 'react-icons/ai'
+import { FaEdit } from 'react-icons/fa'
 
 export const EventCard = ({ event, onEdit, onDelete }) => {
   return (
@@ -13,14 +15,14 @@ export const EventCard = ({ event, onEdit, onDelete }) => {
         <button 
             onClick={() => onEdit(event)} 
             className="text-indigo-600"
-        >
-            Editar
+        >     
+            <FaEdit />
         </button>
         <button 
             onClick={() => onDelete(event.id)} 
             className="text-red-500"
         >
-            Eliminar
+            <AiFillDelete />
         </button>
       </div>
     </li>

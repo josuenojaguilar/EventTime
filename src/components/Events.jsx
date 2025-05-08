@@ -3,9 +3,10 @@ import { useEvents } from '../shared/hooks/useEvents'
 import { Modal } from '../components/Modal'
 import { EventForm } from '../components/EventForm'
 import { EventCard } from './EventCard'
+import { PacmanLoader } from 'react-spinners'
 
 export const Events = () => {
-  const { events, getEvents, addEvent, updateEvent, deleteEvent } = useEvents()
+  const { events, isFetching, getEvents, addEvent, updateEvent, deleteEvent } = useEvents()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [eventToEdit, setEventToEdit] = useState(null)
 
@@ -33,8 +34,16 @@ export const Events = () => {
     setIsModalOpen(false)
   }
 
+  if(isFetching) {
+    return (
+      <div className="w-full flex items-center justify-center h-screen">
+        <PacmanLoader />
+      </div>
+    )
+  }
+
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto mt-10 mb-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Eventos</h1>
         <button onClick={handleAdd} className="px-4 py-2 bg-indigo-600 text-white rounded">Agregar Evento</button>
