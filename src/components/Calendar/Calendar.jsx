@@ -6,7 +6,7 @@ import './CalendarStyles.css'
 import { FaBell } from 'react-icons/fa'
 
 export const Calendar = () => {
-  const { events } = useOutletContext()
+  const { events, categories } = useOutletContext()
   const [date, setDate] = useState(new Date())
 
   const eventsForSelectedDate = events.filter(event =>
@@ -45,7 +45,10 @@ export const Calendar = () => {
                 <li key={event.id} className="border-l-4 border-indigo-500 pl-4 flex items-center justify-between">
                 <div className="flex flex-col">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">{event.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{event.category}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {categories.find(cat => cat.id === event.category)?.name || 'Sin categoría'}
+                  </p>
+
                   <p className="text-gray-700 dark:text-gray-400">{event.description}</p>
                 </div>
                 <FaBell className="text-2xl text-gray-500 hover:text-indigo-500 cursor-pointer" />
