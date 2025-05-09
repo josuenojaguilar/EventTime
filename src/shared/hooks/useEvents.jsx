@@ -53,9 +53,13 @@ export const useEvents = () => {
   }
 
   const deleteEvent = (id) => {
-    const updated = allEvents.filter(ev => ev.id !== id)
-    persist(updated)
-    toast.success('Evento eliminado')
+
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este evento?');
+    if (confirmDelete) {
+      const updated = allEvents.filter(ev => ev.id !== id)
+      persist(updated)
+      toast.success('Evento eliminado')
+    }
   }
 
   return {

@@ -46,9 +46,13 @@ export const useCategories = () => {
   }
 
   const deleteCategory = (id) => {
-    const updated = categories.filter(cat => cat.id !== id)
-    persist(updated)
-    toast.success('Categoría eliminada')
+
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar esta categoría?');
+    if (confirmDelete) {
+      const updated = categories.filter(cat => cat.id !== id)
+      persist(updated)
+      toast.success('Categoría eliminada')
+    }
   }
 
   return {
